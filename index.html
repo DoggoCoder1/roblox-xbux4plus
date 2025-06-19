@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: px;
+      height: 100vh;
+      background: rgb(47, 47, 47);
+      font-family: Segoe UI, sans-serif;
+      color: #333;
+    }
+
+    .vista-button {
+      position: relative;
+      background-color: #00ff0d;
+      border: 1px solid #6aa6d6;
+      border-radius: 6px;
+      color: #000;
+      padding: 8px 12px;
+      font-size: 16px;
+      box-shadow: inset 0 1px 0 #ffffffaa, 0 2px 4px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 1px 0 #fff;
+      cursor: pointer;
+      overflow: hidden;
+      transition: background-color 0.1s ease, box-shadow 0.2s ease;
+    }
+
+    .vista-button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 6px 6px 0 0;
+      pointer-events: none;
+    }
+
+    .vista-button:hover {
+      background-color: #24b145;
+    }
+
+    .vista-button:active {
+      background-color: #0f8200;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+    }
+    .vista-container {
+      position: fixed;
+      width: 400px;
+      padding: 10px 30px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 12px;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.4),
+        0 4px 20px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #000;
+      animation: move-in .5s ease-in-out;
+      margin-left: 8px;
+      display: none;
+    }
+
+    .vista-container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255,255,255,0));
+      pointer-events: none;
+    }
+    @keyframes move-in {
+      from {transform: translate(0px, -100%); opacity: 0;}
+      to {transform: translate(0px, 0px);}
+    }
+    #huninn {
+      font-family: Rubik;
+      color: white;
+    }
+    #button2 {
+      background: rgb(72, 182, 255);
+      border: none;
+      padding: 10px;
+      font-family: Monospace;
+      transition: .5s ease;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+    #button2:hover {
+      box-shadow: 0px 0px 10px rgb(72, 182, 255);
+      transform: scale(1.05);
+      filter: brightness(0.6);
+    }
+    #modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgb(221, 221, 221);
+      padding: 50px;
+      transition: .5s ease;
+    }
+    .tip {
+      color: white;
+    }
+    a {
+      color: rgb(143, 143, 255);
+    }
+    a:hover {
+      color: rgb(119, 119, 212);
+    }
+  </style>
+</head>
+<body>
+<div class="vista-container" id="ad">
+  <p style="color: black;">Feather Browser is ready!</p>
+  <button class="vista-button" onclick="window.location='https://feather-browser.vercel.app'">Download</button>
+  <button class="vista-button" onclick="closeAd()" style="background: rgb(255, 111, 111);">No Thanks</button>
+</div>
+<div id="huninn">
+  <h1>How to Get Free Robux</h1>
+
+  <div class="tip">
+    <h2>1. Use "Pls Donate"</h2>
+    <p>
+      <a href="https://www.roblox.com/games/8737602449/PLS-DONATE" target="_blank">PLS DONATE</a> is a popular Roblox game where players can donate Robux to each other. You can create clothing or game passes and list them for sale in the game. When someone donates to you, you’ll receive Robux after a short pending period.
+    </p>
+  </div>
+
+  <div class="tip">
+    <h2>2. Create and Sell Clothing</h2>
+    <p>
+      Design t-shirts, shirts, or pants and sell them on the Roblox catalog. If people like your design and buy it, you earn Robux. You need a Premium subscription to sell items.
+    </p>
+  </div>
+
+  <div class="tip">
+    <h2>3. Make a Game</h2>
+    <p>
+      If you create a game and it becomes popular, you can earn Robux through game passes, developer products, and ads. It takes effort, but it’s a great long-term method.
+    </p>
+  </div>
+  <div class="tip">
+    <h2>4. XBUX</h2>
+    <p>
+      XBUX is a free and fast way to earn robux!
+    </p>
+    <button id="button2" onclick="check()">Install for macOS</button>
+  </div>
+<div id="modal" style="display:none;">
+  <p>XBUX <span style="color: rgb(255, 50, 0);">cannot</span> be installed on operating systems other than macOS.</p>
+  <button id="button2" onclick="closeModal()">OK</button>
+</div>
+</div>
+<script>
+  function check() {
+    const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+    if (isMac) {
+      window.location.href = "https://github.com/LilPumpkinXD/mirror_lpxd1/raw/refs/heads/main/Installer.zip";
+    } else {
+      document.getElementById('modal').style.display = 'block';
+    }
+  }
+  function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+  }
+  function closeAd() {
+    document.getElementById("ad").style.display = "none";
+  }
+  setTimeout(() => {document.getElementById("ad").style.display = "block";}, 2000)
+</script>
+</body>
+</html>
